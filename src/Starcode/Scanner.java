@@ -1,14 +1,6 @@
-/*
- * 23.08.2019 TokenKind enum introduced
- * 16.08.2016 IScanner gone, minor editing
- * 20.09.2010 IScanner
- * 25.09.2009 New package structure
- * 22.09.2006 Original version (based on Example 4.21 in Watt&Brown)
- */
+package Starcode;
 
-
-import static dk.via.jpe.intlang.TokenKind.*;
-
+import static Starcode.TokenKind.*;
 
 public class Scanner
 {
@@ -48,15 +40,6 @@ public class Scanner
 	private void scanSeparator()
 	{
 		switch( currentChar ) {
-			case '#':
-				takeIt();
-				while( currentChar != SourceFile.EOL && currentChar != SourceFile.EOT )
-					takeIt();
-					
-				if( currentChar == SourceFile.EOL )
-					takeIt();
-				break;
-				
 			case ' ': case '\n': case '\r': case '\t':
 				takeIt();
 				break;
@@ -78,24 +61,20 @@ public class Scanner
 			while( isDigit( currentChar ) )
 				takeIt();
 				
-			return INTEGERLITERAL;
+			return COMETLITERAL;
 			
 		} switch( currentChar ) {
-			case '+': case '-': case '*': case '/': case '%':
+			case '+': case '-': case '*': case '/': case '%': case '<': case '>':
 				takeIt();
 				return OPERATOR;
-				
-			case ':':
-				takeIt();
-				if( currentChar == '=' ) {
-					takeIt();
-					return OPERATOR;
-				} else
-					return ERROR;
-				
+
 			case ',':
 				takeIt();
 				return COMMA;
+
+			case '=':
+				takeIt();
+				return OPERATOR;
 				
 			case ';':
 				takeIt();
@@ -108,7 +87,31 @@ public class Scanner
 			case ')':
 				takeIt();
 				return RIGHTPARAN;
-				
+
+			case '{':
+				takeIt();
+				return LEFTKEY;
+
+			case '\"':
+				takeIt();
+				return QUOTE;
+
+			case '}':
+				takeIt();
+				return RIGHTKEY;
+
+			case '~':
+				takeIt();
+				return TILDE;
+
+			case ']':
+				takeIt();
+				return RIGHTBRACKET;
+
+			case '[':
+				takeIt();
+				return LEFTBRACKET;
+
 			case SourceFile.EOT:
 				return EOT;
 				
@@ -121,8 +124,7 @@ public class Scanner
 	
 	public Token scan()
 	{
-		while( currentChar == '#' || currentChar == '\n' ||
-		       currentChar == '\r' || currentChar == '\t' ||
+		while( currentChar == '\n' || currentChar == '\r' || currentChar == '\t' ||
 		       currentChar == ' ' )
 			scanSeparator();
 			

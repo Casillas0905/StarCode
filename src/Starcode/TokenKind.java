@@ -1,32 +1,31 @@
-/*
- * 23.08.2019 Original version
- */
-
+package Starcode;
 
 public enum TokenKind
 {
 	IDENTIFIER,
-	INTEGERLITERAL,
+	COMETLITERAL,
 	OPERATOR,
-	
-	DECLARE( "declare" ),
-	DO( "do" ),
-	ELSE( "else" ),
-	FI( "fi" ),
-	FUNC( "func" ),
-	IF( "if" ),
-	OD( "od" ),
+	STAR,
+	COMMET,
+	STRINGLITERAL,
+
+	SUPERNOVA ( "supernova" ),
 	RETURN( "return" ),
-	SAY( "say" ),
-	THEN( "then" ),
-	VAR( "var" ),
-	WHILE( "while" ),
+	ORBIT( "orbit" ),
+	ECLIPSE( "eclipse" ),
+	SHINE( "shine" ),
+	SPECTRUM( "spectrum" ),
 	
 	COMMA( "," ),
 	SEMICOLON( ";" ),
 	LEFTPARAN( "(" ),
 	RIGHTPARAN( ")" ),
-	
+	LEFTKEY("{"),
+	RIGHTKEY( "}" ),
+	QUOTE("\""),
+	TILDE("~"),
+	RIGHTBRACKET("]"),
+	LEFTBRACKET("["),
 	EOT,
 	
 	ERROR;
