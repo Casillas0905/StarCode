@@ -81,7 +81,58 @@ public class ParserStarCode {
         }
     }
 
+    private void parseBlock(){
+        if (currentTerminal.kind == "Statement"){
+            accept(IDENTIFIER);
+            if (currentTerminal.kind == RETURN){
+                accept(RETURN);
+                accept(IDENTIFIER);
+            }
+        }
+        if (currentTerminal.kind == RETURN){
+            accept(RETURN);
+            accept(IDENTIFIER);
+        }
+
+    }
+
     private void parseOneStatement() {
+        switch (currentTerminal.kind){
+                case IDENTIFIER:
+                    accept(IDENTIFIER);
+                    break;
+                case SEMICOLON:
+        }
+    }
+
+    private void parseExpression() {
+        parsePrimary();
+
+        while (currentTerminal.kind == LEFTPARAN) {
+            accept(LEFTPARAN);
+            //Todo operator method
+            accept(OPERATOR);
+            parsePrimary();
+            accept(RIGHTPARAN);
+        }
+    }
+
+    private void parsePrimary(){
+        if (currentTerminal.kind == IDENTIFIER){
+            //Todo parse operator
+            accept(OPERATOR);
+            parsePrimary();
+        }
+        if (currentTerminal.kind == IDENTIFIER){
+            accept(IDENTIFIER);
+        }
+        if (currentTerminal.kind == COMETLITERAL){
+            accept(IDENTIFIER);
+        }
+        //Todo see how to handle strings here
+        if (currentTerminal.kind == STRINGLITERAL){
+            accept(IDENTIFIER);
+        }
     }
 
     //We are not allowing different types for parameters in the methods
