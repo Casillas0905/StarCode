@@ -7,6 +7,8 @@
     <list default="true" id="32db3786-ffb3-4bb7-9841-f1628aa178a7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Starcode/ParserStarCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Starcode/ParserStarCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Starcode/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Starcode/Token.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Starcode/TokenKind.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Starcode/TokenKind.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +88,7 @@
       <updated>1726747875443</updated>
       <workItem from="1726747876669" duration="4874000" />
       <workItem from="1727350512406" duration="3992000" />
-      <workItem from="1727970324072" duration="6785000" />
+      <workItem from="1727970324072" duration="10733000" />
     </task>
     <servers />
   </component>

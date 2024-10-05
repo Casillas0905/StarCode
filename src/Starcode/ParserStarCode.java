@@ -82,27 +82,60 @@ public class ParserStarCode {
     }
 
     private void parseBlock(){
-        if (currentTerminal.kind == "Statement"){
+
+        if (currentTerminal.kind == RETURN){
+            accept(RETURN);
             accept(IDENTIFIER);
+        }
+        else{
+            parseStatements();
             if (currentTerminal.kind == RETURN){
                 accept(RETURN);
                 accept(IDENTIFIER);
             }
         }
-        if (currentTerminal.kind == RETURN){
-            accept(RETURN);
-            accept(IDENTIFIER);
-        }
-
     }
 
     private void parseOneStatement() {
-        switch (currentTerminal.kind){
+        if (currentTerminal.kind == IDENTIFIER ||
+        currentTerminal.kind == ORBIT ||
+        currentTerminal.kind == ECLIPSE)
+        {
+            switch (currentTerminal.kind){
+                case ECLIPSE:
+                        accept(ECLIPSE);
+                        accept(LEFTPARAN);
+                        parseExpression();
+                        accept(RIGHTPARAN);
+                        accept(STAR);
+                        parseBlock();
+                        accept(BLACKHOLE);
+                        break;
+                case ORBIT:
+                    accept(ORBIT);
+                    accept(LEFTPARAN);
+                    accept(IDENTIFIER);
+                    accept(COMMA);
+                    accept(IDENTIFIER);
+                    accept(RIGHTPARAN);
+                    accept(LEFTKEY);
+                    parseBlock();
+                    accept(RIGHTKEY);
+                    accept(SEMICOLON);
+                    break;
                 case IDENTIFIER:
                     accept(IDENTIFIER);
-                    break;
-                case SEMICOLON:
-        }
+                    accept(LEFTPARAN);
+                    parsePrimary();
+                    while (currentTerminal.kind == COMMA){
+                        accept(COMMA);
+                        parsePrimary();
+                    }
+                    accept(RIGHTPARAN);
+            }
+        } else {
+            parseExpression();
+            accept(SEMICOLON);}
     }
 
     private void parseExpression() {

@@ -66,7 +66,7 @@ public class Token
 		return false;
 	}
 	
-	private static final TokenKind[] KEYWORDS = { RETURN, SUPERNOVA,ORBIT,ECLIPSE,SHINE,SPECTRUM };
+	private static final TokenKind[] KEYWORDS = { RETURN, SUPERNOVA,ORBIT,ECLIPSE,SHINE,SPECTRUM,BLACKHOLE };
 	
 	
 	private static final String ASSIGNOPS[] =

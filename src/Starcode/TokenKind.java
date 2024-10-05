@@ -15,6 +15,7 @@ public enum TokenKind
 	ECLIPSE( "eclipse" ),
 	SHINE( "shine" ),
 	SPECTRUM( "spectrum" ),
+	BLACKHOLE( "blackhole" ),
 	
 	COMMA( "," ),
 	SEMICOLON( ";" ),
