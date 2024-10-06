@@ -37,6 +37,9 @@ public class ParserStarCode {
                 currentTerminal.kind == COMMET ||
                 currentTerminal.kind == SUPERNOVA )
             parseOneDeclaration();
+        if ( currentTerminal.kind == IDENTIFIER ){
+            System.out.println("Its identifier");
+        }
     }
 
     private void parseOneDeclaration() {
@@ -143,7 +146,6 @@ public class ParserStarCode {
 
         while (currentTerminal.kind == LEFTPARAN) {
             accept(LEFTPARAN);
-            //Todo operator method
             accept(OPERATOR);
             parsePrimary();
             accept(RIGHTPARAN);
@@ -152,7 +154,6 @@ public class ParserStarCode {
 
     private void parsePrimary(){
         if (currentTerminal.kind == IDENTIFIER){
-            //Todo parse operator
             accept(OPERATOR);
             parsePrimary();
         }
