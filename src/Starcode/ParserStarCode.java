@@ -37,9 +37,6 @@ public class ParserStarCode {
                 currentTerminal.kind == COMMET ||
                 currentTerminal.kind == SUPERNOVA )
             parseOneDeclaration();
-        if ( currentTerminal.kind == IDENTIFIER ){
-            System.out.println("Its identifier");
-        }
     }
 
     private void parseOneDeclaration() {
@@ -100,10 +97,7 @@ public class ParserStarCode {
     }
 
     private void parseOneStatement() {
-        if (currentTerminal.kind == IDENTIFIER ||
-        currentTerminal.kind == ORBIT ||
-        currentTerminal.kind == ECLIPSE)
-        {
+        //Todo parse expression
             switch (currentTerminal.kind){
                 case ECLIPSE:
                         accept(ECLIPSE);
@@ -127,33 +121,31 @@ public class ParserStarCode {
                     accept(SEMICOLON);
                     break;
                 case IDENTIFIER:
-                    accept(IDENTIFIER);
+                        parseExpression();
+                        break;
+                case SPECTRUM:
+                    accept(SPECTRUM);
                     accept(LEFTPARAN);
                     parsePrimary();
-                    while (currentTerminal.kind == COMMA){
+                    while (currentTerminal.kind == COMMA) {
                         accept(COMMA);
                         parsePrimary();
                     }
                     accept(RIGHTPARAN);
+                    break;
             }
-        } else {
-            parseExpression();
-            accept(SEMICOLON);}
     }
 
     private void parseExpression() {
         parsePrimary();
-
-        while (currentTerminal.kind == LEFTPARAN) {
-            accept(LEFTPARAN);
+        while (currentTerminal.kind == OPERATOR) {
             accept(OPERATOR);
             parsePrimary();
-            accept(RIGHTPARAN);
         }
     }
 
     private void parsePrimary(){
-        if (currentTerminal.kind == IDENTIFIER){
+        if (currentTerminal.kind == OPERATOR){
             accept(OPERATOR);
             parsePrimary();
         }

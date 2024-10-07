@@ -5,10 +5,10 @@ public enum TokenKind
 	IDENTIFIER,
 	COMETLITERAL,
 	OPERATOR,
-	STAR,
-	COMMET,
 	STRINGLITERAL,
 
+	STAR( "star" ),
+	COMMET( "commet" ),
 	SUPERNOVA ( "supernova" ),
 	RETURN( "return" ),
 	ORBIT( "orbit" ),
