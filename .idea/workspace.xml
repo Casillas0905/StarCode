@@ -5,8 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="32db3786-ffb3-4bb7-9841-f1628aa178a7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Starcode/ast/AST.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Starcode/ast/Block.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Starcode/ast/Declarations.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Starcode/ast/Expression.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Starcode/ast/IDList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Starcode/ast/IDReturn.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Starcode/ast/MethodStatement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Starcode/ast/OneDeclaration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Starcode/ast/OneStatement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Starcode/ast/Primary.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Starcode/ast/Program.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Starcode/ast/ProgramBlock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Starcode/ast/Statements.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Starcode/ast/SupernovaBlock.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Starcode/ParserStarCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Starcode/ParserStarCode.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +115,7 @@
       <workItem from="1726747876669" duration="4874000" />
       <workItem from="1727350512406" duration="3992000" />
       <workItem from="1727970324072" duration="20289000" />
-      <workItem from="1729769837198" duration="2574000" />
+      <workItem from="1729769837198" duration="4473000" />
     </task>
     <servers />
   </component>
