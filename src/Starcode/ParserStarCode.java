@@ -5,7 +5,6 @@ import static Starcode.TokenKind.*;
 public class ParserStarCode {
     private Scanner scan;
 
-
     private Token currentTerminal;
 
 
@@ -19,7 +18,6 @@ public class ParserStarCode {
     public void parseProgram()
     {
         parseProgramBlock();
-
         if( currentTerminal.kind != EOT )
             System.out.println( "Tokens found after end of program" );
     }
@@ -27,7 +25,22 @@ public class ParserStarCode {
     private void parseProgramBlock() {
         accept( LEFTKEY );
         parseDeclarations();
+        if( currentTerminal.kind == IDENTIFIER){
+            parseMethodStatement();
+        }
         accept( RIGHTKEY );
+    }
+
+    private void parseMethodStatement() {
+        accept(IDENTIFIER);
+        accept(LEFTPARAN);
+        parsePrimary();
+        while (currentTerminal.kind == COMMA){
+            accept(COMMA);
+            parsePrimary();
+        }
+        accept(RIGHTPARAN);
+        accept(SEMICOLON);
     }
 
     private void parseDeclarations()
@@ -122,6 +135,7 @@ public class ParserStarCode {
                     break;
                 case IDENTIFIER:
                         parseExpression();
+                        accept(SEMICOLON);
                         break;
                 case SPECTRUM:
                     accept(SPECTRUM);
@@ -153,11 +167,12 @@ public class ParserStarCode {
             accept(IDENTIFIER);
         }
         if (currentTerminal.kind == COMETLITERAL){
-            accept(IDENTIFIER);
+            accept(COMETLITERAL);
         }
-        //Todo see how to handle strings here
-        if (currentTerminal.kind == STRINGLITERAL){
+        if (currentTerminal.kind == QUOTE){
+            accept(QUOTE);
             accept(IDENTIFIER);
+            accept(QUOTE);
         }
     }
 

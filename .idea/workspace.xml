@@ -7,8 +7,6 @@
     <list default="true" id="32db3786-ffb3-4bb7-9841-f1628aa178a7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Starcode/ParserStarCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Starcode/ParserStarCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Starcode/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Starcode/Token.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Starcode/TokenKind.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Starcode/TokenKind.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +40,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/ikers/OneDrive - ViaUC/Via/Semester 6/CMC/StarCode/src/Starcode",
+    "last_opened_file_path": "C:/Users/ikers/Downloads/IntLangAST/dk/via/jpe",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -103,7 +101,8 @@
       <updated>1726747875443</updated>
       <workItem from="1726747876669" duration="4874000" />
       <workItem from="1727350512406" duration="3992000" />
-      <workItem from="1727970324072" duration="17286000" />
+      <workItem from="1727970324072" duration="20289000" />
+      <workItem from="1729769837198" duration="2574000" />
     </task>
     <servers />
   </component>
@@ -115,13 +114,23 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Starcode/ParserStarCode.java</url>
-          <line>198</line>
-          <option name="timeStamp" value="9" />
+          <line>140</line>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Starcode/ParserStarCode.java</url>
-          <line>126</line>
-          <option name="timeStamp" value="13" />
+          <line>213</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Starcode/ParserStarCode.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Starcode/ParserStarCode.java</url>
+          <line>168</line>
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
