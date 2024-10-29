@@ -2,11 +2,13 @@ package Starcode;
 
 public enum TokenKind
 {
+	// Core
 	IDENTIFIER,
+	STARLITERAL,
 	COMETLITERAL,
 	OPERATOR,
-	STRINGLITERAL,
 
+	// Keywords
 	STAR( "star" ),
 	COMMET( "commet" ),
 	SUPERNOVA ( "supernova" ),
@@ -16,7 +18,9 @@ public enum TokenKind
 	SHINE( "shine" ),
 	SPECTRUM( "spectrum" ),
 	BLACKHOLE( "blackhole" ),
-	
+	WHITEHOLE("whitehole"),
+
+	// Signs
 	COMMA( "," ),
 	SEMICOLON( ";" ),
 	LEFTPARAN( "(" ),
@@ -27,25 +31,23 @@ public enum TokenKind
 	TILDE("~"),
 	RIGHTBRACKET("]"),
 	LEFTBRACKET("["),
+
+	// Miscellaneous
 	EOT,
-	
 	ERROR;
-	
-	
+
 	private String spelling = null;
-	
-	
+
 	private TokenKind()
 	{
+
 	}
-	
-	
-	private TokenKind( String spelling )
+
+	private TokenKind(String spelling)
 	{
 		this.spelling = spelling;
 	}
-	
-	
+
 	public String getSpelling()
 	{
 		return spelling;
