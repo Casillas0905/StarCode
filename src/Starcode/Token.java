@@ -7,7 +7,7 @@ public class Token
 	public TokenKind kind;
 	public String spelling;
 
-	private static final TokenKind[] KEYWORDS = { RETURN, SUPERNOVA, ORBIT, ECLIPSE, SHINE, SPECTRUM, BLACKHOLE, COMMET, STAR };
+	private static final TokenKind[] KEYWORDS = { RETURN, SUPERNOVA, ORBIT, ECLIPSE, SHINE, BLACKHOLE, COMMET, STAR, WHITEHOLE, EXPLODE };
 	private static final String ASSIGNOPS[] = { "=" };
 	private static final String ADDOPS[] =	{ "+", "-" };
 	private static final String MULOPS[] = { "*", "/" };

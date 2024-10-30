@@ -13,10 +13,10 @@ public enum TokenKind
 	COMMET( "commet" ),
 	SUPERNOVA ( "supernova" ),
 	RETURN( "return" ),
+	EXPLODE( "explode" ),
 	ORBIT( "orbit" ),
 	ECLIPSE( "eclipse" ),
 	SHINE( "shine" ),
-	SPECTRUM( "spectrum" ),
 	BLACKHOLE( "blackhole" ),
 	WHITEHOLE("whitehole"),
 
