@@ -1,6 +1,6 @@
 package Starcode.ast;
 
-public class EclipseStatement extends AST
+public class EclipseStatement extends OneStatement
 {
     public Expression expression;
     public Block block;

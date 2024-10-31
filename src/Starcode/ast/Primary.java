@@ -1,6 +1,6 @@
 package Starcode.ast;
 
-class Primary extends AST
+public class Primary extends AST
 {
     public Identifier identifier;
     public CometLiteral cometLiteral;

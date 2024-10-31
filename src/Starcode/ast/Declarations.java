@@ -1,12 +1,12 @@
 package Starcode.ast;
 
-import java.util.ArrayList;
+import java.util.Vector;
 
 public class Declarations extends AST
 {
-    public ArrayList<OneDeclaration> declarations;
+    public Vector<OneDeclaration> declarations;
 
-    Declarations(ArrayList<OneDeclaration> declarations)
+    public Declarations(Vector<OneDeclaration> declarations)
     {
         this.declarations = declarations;
     }
