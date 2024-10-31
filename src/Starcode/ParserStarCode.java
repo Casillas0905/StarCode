@@ -165,8 +165,7 @@ public class ParserStarCode
         switch (currentTerminal.kind)
         {
             case IDENTIFIER: case COMETLITERAL: case STARLITERAL:
-                parseExpression();
-                accept(SEMICOLON);
+                parseExpressionStatement();
                 break;
             case ECLIPSE:
                 parseEclipseStatement();
@@ -181,6 +180,12 @@ public class ParserStarCode
                 parseReturnStatement();
                 break;
         }
+    }
+
+    private void parseExpressionStatement()
+    {
+        parseExpression();
+        accept(SEMICOLON);
     }
 
     private void parseEclipseStatement()
