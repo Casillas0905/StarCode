@@ -1,5 +1,9 @@
 package Starcode;
 
+import Starcode.ast.*;
+
+import java.util.Vector;
+
 import static Starcode.TokenKind.*;
 
 public class ParserAST
@@ -14,109 +18,151 @@ public class ParserAST
         currentTerminal = scanner.scan();
     }
 
-    public void parseProgram()
+    public Program parseProgram()
     {
-        parseProgramBlock();
+        ProgramBlock block = parseProgramBlock();
         if(currentTerminal.kind != EOT)
             System.out.println( "Tokens found after end of program" );
+
+        return new Program(block);
     }
 
-    private void parseProgramBlock()
+    private ProgramBlock parseProgramBlock()
     {
+        Declarations declarations = null;
+        SupernovaStatement statement = null;
+
         accept(LEFTKEY);
-        parseDeclarations();
+        declarations = parseDeclarations();
         if(currentTerminal.kind == EXPLODE)
-            parseSupernovaStatement();
+            statement = parseSupernovaStatement();
         accept(RIGHTKEY);
+        return new ProgramBlock(declarations, statement);
     }
 
-    private void parseDeclarations()
+    private Declarations parseDeclarations()
     {
+        Vector<OneDeclaration> declarations = new Vector<>();
+
         while(currentTerminal.kind == STAR ||
                 currentTerminal.kind == COMMET ||
                 currentTerminal.kind == SUPERNOVA)
-            parseOneDeclaration();
+            declarations.add(parseOneDeclaration());
+
+        return new Declarations(declarations);
     }
 
-    private void parseOneDeclaration()
+    private OneDeclaration parseOneDeclaration()
     {
+        OneDeclaration declaration = null;
         switch(currentTerminal.kind)
         {
             case STAR:
-                parseStarDeclaration();
+                declaration = parseStarDeclaration();
                 break;
             case COMMET:
-                parseCometDeclaration();
+                declaration = parseCometDeclaration();
                 break;
             case SUPERNOVA:
-                parseSupernovaDeclaration();
+                declaration = parseSupernovaDeclaration();
                 break;
         }
+        return declaration;
     }
 
-    private void parseStarDeclaration()
+    private StarDeclaration parseStarDeclaration()
     {
         accept(STAR);
-        accept(IDENTIFIER);
+
+        Identifier identifier = parseIdentifier();
+        boolean isArray = false;
+
         if(currentTerminal.kind == LEFTBRACKET)
         {
             accept(LEFTBRACKET);
             accept(RIGHTBRACKET);
+            isArray = true;
         }
         accept(SEMICOLON);
+
+        return new StarDeclaration(identifier, isArray);
     }
 
-    private void parseCometDeclaration()
+    private CometDeclaration parseCometDeclaration()
     {
         accept(COMMET);
-        accept(IDENTIFIER);
+
+        Identifier identifier = parseIdentifier();
+        boolean isArray = false;
+
         if(currentTerminal.kind == LEFTBRACKET)
         {
             accept(LEFTBRACKET);
             accept(RIGHTBRACKET);
+            isArray = true;
         }
         accept(SEMICOLON);
+
+        return new CometDeclaration(identifier, isArray);
     }
 
-    private void parseSupernovaDeclaration()
+    private SupernovaDeclaration parseSupernovaDeclaration()
     {
         accept(SUPERNOVA);
-        parseReturnType();
-        accept(IDENTIFIER);
+        ReturnType returnType = parseReturnType();
+        Identifier identifier = parseIdentifier();
         accept(LEFTPARAN);
-        parseIdList();
+        IdList idList = parseIdList();
         accept(RIGHTPARAN);
-        parseSupernovaBlock();
+        SupernovaBlock block = parseSupernovaBlock();
         accept(SEMICOLON);
+
+        return new SupernovaDeclaration(returnType, identifier, idList, block);
     }
 
-    private void parseReturnType()
+    private ReturnType parseReturnType()
     {
+        String type = null;
+        boolean isArray = false;
+
         if(currentTerminal.kind == STAR)
         {
+            type = currentTerminal.spelling;
             accept(STAR);
         }
         else if(currentTerminal.kind == COMMET)
         {
+            type = currentTerminal.spelling;
             accept(COMMET);
+        }
+        else
+        {
+            System.out.println("Expected STAR or COMMET");
+            type = "???";
         }
 
         if (currentTerminal.kind == LEFTBRACKET){
             accept(LEFTBRACKET);
             accept(RIGHTBRACKET);
+            isArray = true;
         }
+
+        return new ReturnType(type, isArray);
     }
 
     //We are not allowing different types for parameters in the methods
-    private void parseIdList()
+    private IdList parseIdList()
     {
-        accept(IDENTIFIER);
+        Vector<Identifier> identifiers = new Vector<>();
+        boolean areArrays = false;
+
+        identifiers.add(parseIdentifier());
         if (currentTerminal.kind == COMMA)
         {
             while (currentTerminal.kind == COMMA)
             {
                 accept(COMMA);
-                accept(IDENTIFIER);
+                identifiers.add(parseIdentifier());
             }
         }
         else if (currentTerminal.kind == LEFTBRACKET)
@@ -126,30 +172,39 @@ public class ParserAST
             while (currentTerminal.kind == COMMA)
             {
                 accept(COMMA);
-                accept(IDENTIFIER);
+                identifiers.add(parseIdentifier());
                 accept(LEFTBRACKET);
                 accept(RIGHTBRACKET);
             }
+            areArrays = true;
         }
+
+        return new IdList(identifiers, areArrays);
     }
 
-    private void parseSupernovaBlock()
+    private SupernovaBlock parseSupernovaBlock()
     {
         accept(WHITEHOLE);
-        parseStatements();
-        parseReturnStatement();
+        Statements statements =  parseStatements();
+        ReturnStatement returnStatement = parseReturnStatement();
         accept(BLACKHOLE);
+
+        return new SupernovaBlock(statements, returnStatement);
     }
 
-    private void parseBlock()
+    private Block parseBlock()
     {
         accept(WHITEHOLE);
-        parseStatements();
+        Statements statements = parseStatements();
         accept(BLACKHOLE);
+
+        return new Block(statements);
     }
 
-    private void parseStatements()
+    private Statements parseStatements()
     {
+        Vector<OneStatement> statements = new Vector<>();
+
         while(currentTerminal.kind == IDENTIFIER ||
                 currentTerminal.kind == COMETLITERAL ||
                 currentTerminal.kind == STARLITERAL ||
@@ -157,104 +212,187 @@ public class ParserAST
                 currentTerminal.kind == ECLIPSE ||
                 currentTerminal.kind == ORBIT ||
                 currentTerminal.kind == RETURN)
-            parseOneStatement();
+            statements.add(parseOneStatement());
+
+        return new Statements(statements);
     }
 
-    private void parseOneStatement()
+    private OneStatement parseOneStatement()
     {
+        OneStatement statement = null;
         switch (currentTerminal.kind)
         {
             case IDENTIFIER: case COMETLITERAL: case STARLITERAL:
-            parseExpressionStatement();
-            break;
+                statement = parseExpressionStatement();
+                break;
             case ECLIPSE:
-                parseEclipseStatement();
+                statement = parseEclipseStatement();
                 break;
             case ORBIT:
-                parseOrbitStatement();
+                statement = parseOrbitStatement();
                 break;
             case EXPLODE:
-                parseSupernovaStatement();
+                statement = parseSupernovaStatement();
                 break;
             case RETURN:
-                parseReturnStatement();
+                statement = parseReturnStatement();
                 break;
         }
+
+        return statement;
     }
 
-    private void parseExpressionStatement()
+    private ExpressionStatement parseExpressionStatement()
     {
-        parseExpression();
+        Expression expression = parseExpression();
         accept(SEMICOLON);
+        return new ExpressionStatement(expression);
     }
 
-    private void parseEclipseStatement()
+    private EclipseStatement parseEclipseStatement()
     {
         accept(ECLIPSE);
         accept(LEFTPARAN);
-        parseExpression();
+        Expression expression = parseExpression();
         accept(RIGHTPARAN);
-        parseBlock();
+        Block block = parseBlock();
+
+        return new EclipseStatement(expression, block);
     }
 
-    private void parseOrbitStatement()
+    private OrbitStatement parseOrbitStatement()
     {
         accept(ORBIT);
         accept(LEFTPARAN);
-        accept(IDENTIFIER);
+        Identifier incrementalIdentifier = parseIdentifier();
         accept(COMMA);
-        accept(IDENTIFIER);
+        Identifier countIdentifier = parseIdentifier();
         accept(RIGHTPARAN);
-        parseBlock();
+        Block block = parseBlock();
+
+        return new OrbitStatement(incrementalIdentifier, countIdentifier, block);
     }
 
-    private void parseSupernovaStatement()
+    private SupernovaStatement parseSupernovaStatement()
     {
+        Vector<Primary> parameters = new Vector<>();
+
         accept(EXPLODE);
-        accept(IDENTIFIER);
+        Identifier identifier = parseIdentifier();
         accept(LEFTPARAN);
-        parsePrimary();
+        parameters.add(parsePrimary());
         while(currentTerminal.kind == COMMA)
         {
             accept(COMMA);
-            parsePrimary();
+            parameters.add(parsePrimary());
         }
         accept(RIGHTPARAN);
+
+        return new SupernovaStatement(identifier, parameters);
     }
 
-    private void parseReturnStatement()
+    private ReturnStatement parseReturnStatement()
     {
         accept(RETURN);
-        parsePrimary();
+        Primary primary = parsePrimary();
         accept(SEMICOLON);
+
+        return new ReturnStatement(primary);
     }
 
-    private void parseExpression()
+    private Expression parseExpression()
     {
-        parsePrimary();
+        Vector<Operator> operators = new Vector<>();
+        Vector<Primary> primaries = new Vector<>();
+
+        Primary primary = parsePrimary();
         while(currentTerminal.kind == OPERATOR)
         {
-            accept(OPERATOR);
-            parsePrimary();
+            operators.add(parseOperator());
+            primaries.add(parsePrimary());
         }
+
+        return new Expression(primary, primaries, operators);
     }
 
-    private void parsePrimary()
+    private Primary parsePrimary()
     {
+        Primary primary = null;
         switch (currentTerminal.kind)
         {
             case IDENTIFIER:
-                accept(IDENTIFIER);
+                primary = new Primary(parseIdentifier());
                 break;
             case COMETLITERAL:
+                primary = new Primary(parseCometLiteral());
                 accept(COMETLITERAL);
                 break;
-            //TODO: I think this is broken | The solution to this I guess  will need to be written in the scanner
             case QUOTE:
-                accept(QUOTE);
-                accept(IDENTIFIER);
-                accept(QUOTE);
+                primary = new Primary(parseStarLiteral());
                 break;
+        }
+        return primary;
+    }
+
+    private Identifier parseIdentifier()
+    {
+        if(currentTerminal.kind == IDENTIFIER)
+        {
+            Identifier identifier = new Identifier(currentTerminal.spelling);
+            accept(IDENTIFIER);
+            return identifier;
+        }
+        else
+        {
+            System.out.println("Identifier expected");
+            return new Identifier("????");
+        }
+    }
+
+    private CometLiteral parseCometLiteral()
+    {
+        if(currentTerminal.kind == COMETLITERAL)
+        {
+            CometLiteral literal = new CometLiteral(currentTerminal.spelling);
+            accept(COMETLITERAL);
+            return literal;
+        }
+        else
+        {
+            System.out.println("CometLiteral expected");
+            return new CometLiteral("????");
+        }
+    }
+
+    private StarLiteral parseStarLiteral()
+    {
+        if(currentTerminal.kind == QUOTE)
+        {
+            accept(QUOTE);
+            StarLiteral literal = new StarLiteral(currentTerminal.spelling);
+            accept(IDENTIFIER);
+            accept(QUOTE);
+            return literal;
+        }
+        else
+        {
+            System.out.println("StarLiteral expected");
+            return new StarLiteral("????");
+        }
+    }
+
+    private Operator parseOperator()
+    {
+        if(currentTerminal.kind == OPERATOR)
+        {
+            Operator operator = new Operator(currentTerminal.spelling);
+            accept(OPERATOR);
+            return operator;
+        }
+        else
+        {
+            System.out.println("Operator expected");
+            return new Operator("????");
         }
     }
 
