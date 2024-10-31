@@ -1,11 +1,13 @@
 package Starcode.ast;
 
-class SupernovaBlock extends AST {
+public class SupernovaBlock extends AST
+{
     public Statements statements;
-    public String returnIdentifier;
+    public ReturnStatement returnStatement;
 
-    public SupernovaBlock(Statements statements, String returnIdentifier) {
+    public SupernovaBlock(Statements statements, ReturnStatement returnStatement)
+    {
         this.statements = statements;
-        this.returnIdentifier = returnIdentifier;
+        this.returnStatement = returnStatement;
     }
 }

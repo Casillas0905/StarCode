@@ -5,21 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="32db3786-ffb3-4bb7-9841-f1628aa178a7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Starcode/ast/AST.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Starcode/ast/Block.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Starcode/ast/Declarations.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Starcode/ast/Expression.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Starcode/ast/IDList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Starcode/ast/IDReturn.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Starcode/ast/MethodStatement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Starcode/ast/OneDeclaration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Starcode/ast/OneStatement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Starcode/ast/Primary.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Starcode/ast/Program.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Starcode/ast/ProgramBlock.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Starcode/ast/Statements.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Starcode/ast/SupernovaBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Starcode/ast/ArrayAccess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Starcode/ParserAST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Starcode/ParserAST.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Starcode/Scanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Starcode/Scanner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Starcode/ast/Primary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Starcode/ast/Primary.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +40,7 @@
     "Application.TestDriverScanner.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "refactoring-according-to-grammar",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/ikers/Downloads/IntLangAST/dk/via/jpe",
     "node.js.detected.package.eslint": "true",
@@ -78,6 +67,26 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestDriverParser" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Starcode.TestDriverParser" />
+      <module name="StarCode" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Starcode.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestDriverScanner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Starcode.TestDriverScanner" />
+      <module name="StarCode" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -116,6 +125,7 @@
       <workItem from="1727350512406" duration="3992000" />
       <workItem from="1727970324072" duration="20289000" />
       <workItem from="1729769837198" duration="4473000" />
+      <workItem from="1730380084721" duration="2540000" />
     </task>
     <servers />
   </component>
@@ -127,23 +137,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Starcode/ParserStarCode.java</url>
-          <line>140</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Starcode/ParserStarCode.java</url>
-          <line>213</line>
+          <line>265</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Starcode/ParserStarCode.java</url>
-          <line>34</line>
+          <line>32</line>
           <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Starcode/ParserStarCode.java</url>
-          <line>168</line>
-          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

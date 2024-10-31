@@ -1,16 +1,29 @@
 package Starcode.ast;
 
-class Primary extends AST {
-    public String identifier;
-    public String operator;
-    public Primary primary;
+public class Primary extends AST
+{
+    public Identifier identifier;
+    public CometLiteral cometLiteral;
+    public StarLiteral starLiteral;
+    public ArrayAccess arrayAccess;
 
-    public Primary(String identifier) {
+    public Primary(Identifier identifier)
+    {
         this.identifier = identifier;
     }
 
-    public Primary(String operator, Primary primary) {
-        this.operator = operator;
-        this.primary = primary;
+    public Primary(ArrayAccess arrayAccess) {
+        this.arrayAccess = arrayAccess;
+    }
+
+    public Primary(CometLiteral cometLiteral)
+    {
+        this.cometLiteral = cometLiteral;
+    }
+
+    public Primary(StarLiteral starLiteral)
+    {
+        this.starLiteral = starLiteral;
     }
 }
+
