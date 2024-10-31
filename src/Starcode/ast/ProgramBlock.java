@@ -1,10 +1,12 @@
 package Starcode.ast;
 
-public class ProgramBlock {
-    Declarations declarations;
-    OneStatement statement;
+public class ProgramBlock
+{
+    public Declarations declarations;
+    public SupernovaStatement statement;
 
-    ProgramBlock(Declarations declarations, OneStatement statement){
+    public ProgramBlock(Declarations declarations, SupernovaStatement statement)
+    {
         this.declarations = declarations;
         this.statement = statement;
     }

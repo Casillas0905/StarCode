@@ -1,9 +1,11 @@
 package Starcode.ast;
 
-public class Program extends AST {
-    ProgramBlock block;
+public class Program extends AST
+{
+    public ProgramBlock block;
 
-    Program(ProgramBlock block) {
+    public Program(ProgramBlock block)
+    {
         this.block = block;
     }
 }

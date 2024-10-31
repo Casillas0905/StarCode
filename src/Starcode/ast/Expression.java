@@ -2,11 +2,14 @@ package Starcode.ast;
 
 import java.util.Vector;
 
-class Expression extends AST {
-    public Vector<Primary> primaries = new Vector<>();
-    public Vector<String> operators = new Vector<>();
+public class Expression extends AST
+{
+    public Primary primary;
+    public Vector<Operator> operators;
+    public Vector<Primary> primaries;
 
-    public Expression(Vector<Primary> primaries, Vector<String> operators) {
+    public Expression(Primary primary, Vector<Primary> primaries, Vector<Operator> operators) {
+        this.primary = primary;
         this.primaries = primaries;
         this.operators = operators;
     }
