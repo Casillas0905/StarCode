@@ -31,6 +31,8 @@ public enum TokenKind
 	TILDE("~"),
 	RIGHTBRACKET("]"),
 	LEFTBRACKET("["),
+	GT(">"),
+	LT("<"),
 
 	// Miscellaneous
 	EOT,

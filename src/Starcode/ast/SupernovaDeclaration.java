@@ -6,12 +6,13 @@ public class SupernovaDeclaration extends OneDeclaration
     public Identifier identifier;
     public IdList idList;
     public SupernovaBlock supernovaBlock;
+    public TypeList typeList;
 
-    public SupernovaDeclaration(ReturnType returnType, Identifier identifier, IdList idList, SupernovaBlock supernovaBlock)
-    {
+    public SupernovaDeclaration(ReturnType returnType, Identifier identifier, IdList idList, SupernovaBlock supernovaBlock, TypeList typeList) {
         this.returnType = returnType;
         this.identifier = identifier;
         this.idList = idList;
         this.supernovaBlock = supernovaBlock;
+        this.typeList = typeList;
     }
 }

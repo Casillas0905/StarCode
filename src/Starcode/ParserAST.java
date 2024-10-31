@@ -2,6 +2,7 @@ package Starcode;
 
 import Starcode.ast.*;
 
+import java.util.GregorianCalendar;
 import java.util.Vector;
 
 import static Starcode.TokenKind.*;
@@ -106,6 +107,18 @@ public class ParserAST
         return new CometDeclaration(identifier, isArray);
     }
 
+    private TypeList ParseTypeList(){
+        accept(TILDE);
+        accept(GT);
+        Vector<ReturnType> returnTypes = new Vector<>();
+        returnTypes.add(parseReturnType());
+        while (currentTerminal.kind == COMMA){
+            accept(COMMA);
+            returnTypes.add(parseReturnType());
+        }
+        return new TypeList(returnTypes);
+    }
+
     private SupernovaDeclaration parseSupernovaDeclaration()
     {
         accept(SUPERNOVA);
@@ -114,10 +127,11 @@ public class ParserAST
         accept(LEFTPARAN);
         IdList idList = parseIdList();
         accept(RIGHTPARAN);
+        TypeList typeList = ParseTypeList();
         SupernovaBlock block = parseSupernovaBlock();
         accept(SEMICOLON);
 
-        return new SupernovaDeclaration(returnType, identifier, idList, block);
+        return new SupernovaDeclaration(returnType, identifier, idList, block, typeList);
     }
 
     private ReturnType parseReturnType()
