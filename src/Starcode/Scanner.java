@@ -84,6 +84,12 @@ public class Scanner
 			case '[':
 				takeIt();
 				return LEFTBRACKET;
+			case '<':
+				takeIt();
+				return LT;
+			case '>':
+				takeIt();
+				return GT;
 			case SourceFile.EOT:
 				return EOT;
 			default:

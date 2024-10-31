@@ -335,7 +335,10 @@ public class ParserAST
         switch (currentTerminal.kind)
         {
             case IDENTIFIER:
-                primary = new Primary(parseIdentifier());
+                Identifier identifier = parseIdentifier();
+                if (currentTerminal.kind == LEFTBRACKET){
+                    primary = new Primary(parseArrayAccess(identifier));
+                } else primary = new Primary(identifier);
                 break;
             case COMETLITERAL:
                 primary = new Primary(parseCometLiteral());
@@ -346,6 +349,13 @@ public class ParserAST
                 break;
         }
         return primary;
+    }
+
+    private ArrayAccess parseArrayAccess(Identifier identifier){
+        accept(LEFTBRACKET);
+        CometLiteral cometLiteral = parseCometLiteral();
+        accept(RIGHTBRACKET);
+        return new ArrayAccess(identifier, cometLiteral);
     }
 
     private Identifier parseIdentifier()
