@@ -1,6 +1,6 @@
 package Starcode.ast;
 
-public class ProgramBlock
+public class ProgramBlock extends AST
 {
     public Declarations declarations;
     public SupernovaStatement statement;
