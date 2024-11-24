@@ -12,4 +12,9 @@ public class OrbitStatement extends OneStatement
         this.countIdentifier = countIdentifier;
         this.block = block;
     }
+
+    public Object visit( Visitor v, Object arg )
+    {
+        return v.visitOrbitStatement( this, arg );
+    }
 }

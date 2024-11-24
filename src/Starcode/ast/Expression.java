@@ -13,4 +13,9 @@ public class Expression extends AST
         this.primaries = primaries;
         this.operators = operators;
     }
+
+    public Object visit( Visitor v, Object arg )
+    {
+        return v.visitExpression( this, arg );
+    }
 }

@@ -25,5 +25,10 @@ public class Primary extends AST
     {
         this.starLiteral = starLiteral;
     }
+
+    public Object visit( Visitor v, Object arg )
+    {
+        return v.visitPrimary( this, arg );
+    }
 }
 

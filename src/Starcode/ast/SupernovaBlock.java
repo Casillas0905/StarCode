@@ -10,4 +10,9 @@ public class SupernovaBlock extends AST
         this.statements = statements;
         this.returnStatement = returnStatement;
     }
+
+    public Object visit( Visitor v, Object arg )
+    {
+        return v.visitSupernovaBlock( this, arg );
+    }
 }

@@ -9,4 +9,9 @@ public class ArrayAccess {
         this.identifier = identifier;
         this.cometLiteral = cometLiteral;
     }
+
+    public Object visit( Visitor v, Object arg )
+    {
+        return v.visitArrayAccess( this, arg );
+    }
 }
