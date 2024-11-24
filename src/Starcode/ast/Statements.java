@@ -10,4 +10,9 @@ public class Statements extends AST
     {
         this.statements = statements;
     }
+
+    public Object visit( Visitor v, Object arg )
+    {
+        return v.visitStatements( this, arg );
+    }
 }

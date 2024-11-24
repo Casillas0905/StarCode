@@ -10,5 +10,10 @@ public class Declarations extends AST
     {
         this.declarations = declarations;
     }
+
+    public Object visit( Visitor v, Object arg )
+    {
+        return v.visitDeclarations( this, arg );
+    }
 }
 

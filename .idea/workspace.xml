@@ -5,10 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="32db3786-ffb3-4bb7-9841-f1628aa178a7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Starcode/ast/ArrayAccess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Starcode/ParserAST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Starcode/ParserAST.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Starcode/Scanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Starcode/Scanner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Checker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Starcode/Checker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Starcode/IdEntry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Starcode/IdentificationTable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Starcode/Type.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Starcode/ast/Visitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Starcode/ast/ArrayAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Starcode/ast/ArrayAccess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Starcode/ast/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Starcode/ast/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Starcode/ast/CometDeclaration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Starcode/ast/CometDeclaration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Starcode/ast/CometLiteral.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Starcode/ast/CometLiteral.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Starcode/ast/Declarations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Starcode/ast/Declarations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Starcode/ast/EclipseStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Starcode/ast/EclipseStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Starcode/ast/Expression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Starcode/ast/Expression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Starcode/ast/ExpressionStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Starcode/ast/ExpressionStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Starcode/ast/IdList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Starcode/ast/IdList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Starcode/ast/Identifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Starcode/ast/Identifier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Starcode/ast/Operator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Starcode/ast/Operator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Starcode/ast/OrbitStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Starcode/ast/OrbitStatement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Starcode/ast/Primary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Starcode/ast/Primary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Starcode/ast/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Starcode/ast/Program.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Starcode/ast/ProgramBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Starcode/ast/ProgramBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Starcode/ast/ReturnStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Starcode/ast/ReturnStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Starcode/ast/ReturnType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Starcode/ast/ReturnType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Starcode/ast/StarDeclaration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Starcode/ast/StarDeclaration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Starcode/ast/StarLiteral.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Starcode/ast/StarLiteral.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Starcode/ast/Statements.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Starcode/ast/Statements.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Starcode/ast/SupernovaBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Starcode/ast/SupernovaBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Starcode/ast/SupernovaDeclaration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Starcode/ast/SupernovaDeclaration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Starcode/ast/SupernovaStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Starcode/ast/SupernovaStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Starcode/ast/TypeList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Starcode/ast/TypeList.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +45,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -34,23 +62,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.TestDriverParser.executor": "Run",
-    "Application.TestDriverScanner.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "refactoring-according-to-grammar",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/ikers/Downloads/IntLangAST/dk/via/jpe",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.TestDriverParser.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestDriverScanner.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ikers/Downloads/IntLangChecker/dk/via/jpe/intlang&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\ikers\OneDrive - ViaUC\Via\Semester 6\CMC\StarCode\src\Starcode" />
@@ -125,7 +154,10 @@
       <workItem from="1727350512406" duration="3992000" />
       <workItem from="1727970324072" duration="20289000" />
       <workItem from="1729769837198" duration="4473000" />
-      <workItem from="1730380084721" duration="2540000" />
+      <workItem from="1730380084721" duration="3586000" />
+      <workItem from="1731936398171" duration="7921000" />
+      <workItem from="1732382584572" duration="482000" />
+      <workItem from="1732383092348" duration="1834000" />
     </task>
     <servers />
   </component>

@@ -10,4 +10,9 @@ public class ProgramBlock extends AST
         this.declarations = declarations;
         this.statement = statement;
     }
+
+    public Object visit( Visitor v, Object arg )
+    {
+        return v.visitProgramBlock( this, arg );
+    }
 }

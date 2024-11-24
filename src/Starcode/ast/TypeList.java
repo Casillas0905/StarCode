@@ -9,4 +9,9 @@ public class TypeList extends AST {
     public TypeList(Vector<ReturnType> returnType) {
         this.returnType = returnType;
     }
+
+    public Object visit( Visitor v, Object arg )
+    {
+        return v.visitTypeList( this, arg );
+    }
 }
