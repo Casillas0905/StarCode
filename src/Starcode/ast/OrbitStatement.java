@@ -13,7 +13,7 @@ public class OrbitStatement extends OneStatement
         this.block = block;
     }
 
-    public Object visit( Visitor v, Object arg )
+    public Object visit(IVisitor v, Object arg )
     {
         return v.visitOrbitStatement( this, arg );
     }

@@ -11,7 +11,7 @@ public class ReturnType extends AST
         this.isArray = isArray;
     }
 
-    public Object visit( Visitor v, Object arg )
+    public Object visit(IVisitor v, Object arg )
     {
         return v.visitReturnType( this, arg );
     }

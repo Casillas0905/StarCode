@@ -9,7 +9,7 @@ public class Program extends AST
         this.block = block;
     }
 
-    public Object visit( Visitor v, Object arg )
+    public Object visit(IVisitor v, Object arg )
     {
         return v.visitProgram( this, arg );
     }

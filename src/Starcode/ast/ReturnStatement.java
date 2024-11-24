@@ -9,7 +9,7 @@ public class ReturnStatement extends OneStatement
         this.primary = primary;
     }
 
-    public Object visit( Visitor v, Object arg )
+    public Object visit(IVisitor v, Object arg )
     {
         return v.visitReturnStatement( this, arg );
     }

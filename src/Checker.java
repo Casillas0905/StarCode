@@ -4,7 +4,7 @@ import java.util.*;
 
 
 public class Checker
-        implements Visitor
+        implements IVisitor
 {
     private IdentificationTable idTable = new IdentificationTable();
 

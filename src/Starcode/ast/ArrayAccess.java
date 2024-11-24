@@ -10,7 +10,7 @@ public class ArrayAccess {
         this.cometLiteral = cometLiteral;
     }
 
-    public Object visit( Visitor v, Object arg )
+    public Object visit(IVisitor v, Object arg )
     {
         return v.visitArrayAccess( this, arg );
     }

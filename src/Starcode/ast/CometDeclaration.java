@@ -11,7 +11,7 @@ public class CometDeclaration extends OneDeclaration
         this.isArray = isArray;
     }
 
-    public Object visit( Visitor v, Object arg )
+    public Object visit(IVisitor v, Object arg )
     {
         return v.visitCometDeclaration( this, arg );
     }

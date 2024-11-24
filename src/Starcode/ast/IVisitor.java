@@ -1,6 +1,6 @@
 package Starcode.ast;
 
-public interface Visitor {
+public interface IVisitor {
 
     public Object visitProgram( Program p, Object arg );
 

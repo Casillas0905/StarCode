@@ -11,7 +11,7 @@ public class SupernovaBlock extends AST
         this.returnStatement = returnStatement;
     }
 
-    public Object visit( Visitor v, Object arg )
+    public Object visit(IVisitor v, Object arg )
     {
         return v.visitSupernovaBlock( this, arg );
     }

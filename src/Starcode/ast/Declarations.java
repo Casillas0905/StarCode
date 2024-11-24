@@ -11,7 +11,7 @@ public class Declarations extends AST
         this.declarations = declarations;
     }
 
-    public Object visit( Visitor v, Object arg )
+    public Object visit(IVisitor v, Object arg )
     {
         return v.visitDeclarations( this, arg );
     }

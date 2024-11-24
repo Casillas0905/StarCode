@@ -13,7 +13,7 @@ public class IdList extends AST
         this.areArrays = areArrays;
     }
 
-    public Object visit( Visitor v, Object arg )
+    public Object visit(IVisitor v, Object arg )
     {
         return v.visitIdList( this, arg );
     }

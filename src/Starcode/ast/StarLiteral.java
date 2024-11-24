@@ -7,7 +7,7 @@ public class StarLiteral extends Terminal
         this.spelling = spelling;
     }
 
-    public Object visit( Visitor v, Object arg )
+    public Object visit(IVisitor v, Object arg )
     {
         return v.visitStarLiteral( this, arg );
     }

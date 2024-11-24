@@ -14,7 +14,7 @@ public class Expression extends AST
         this.operators = operators;
     }
 
-    public Object visit( Visitor v, Object arg )
+    public Object visit(IVisitor v, Object arg )
     {
         return v.visitExpression( this, arg );
     }

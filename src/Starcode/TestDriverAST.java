@@ -20,7 +20,6 @@ public class TestDriverAST
 			ParserAST p = new ParserAST(s);
 		
 			AST ast = p.parseProgram();
-			//new ASTViewer( ast );
 		}
 	}
 }

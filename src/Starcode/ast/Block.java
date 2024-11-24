@@ -9,7 +9,7 @@ public class Block extends AST
         this.statements = statements;
     }
 
-    public Object visit( Visitor v, Object arg )
+    public Object visit(IVisitor v, Object arg )
     {
         return v.visitBlock( this, arg );
     }

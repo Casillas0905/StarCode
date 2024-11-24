@@ -13,7 +13,7 @@ public class SupernovaStatement extends OneStatement
         this.parameters = parameters;
     }
 
-    public Object visit( Visitor v, Object arg )
+    public Object visit(IVisitor v, Object arg )
     {
         return v.visitSupernovaStatement( this, arg );
     }
