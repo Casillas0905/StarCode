@@ -308,10 +308,10 @@ public class ParserAST
     private ReturnStatement parseReturnStatement()
     {
         accept(RETURN);
-        Primary primary = parsePrimary();
+        Identifier identifier = parseIdentifier();
         accept(SEMICOLON);
 
-        return new ReturnStatement(primary);
+        return new ReturnStatement(identifier);
     }
 
     private Expression parseExpression()

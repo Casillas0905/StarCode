@@ -2,11 +2,11 @@ package Starcode.ast;
 
 public class ReturnStatement extends OneStatement
 {
-    Primary primary;
+    public Identifier identifier;
 
-    public ReturnStatement(Primary primary)
+    public ReturnStatement(Identifier identifier)
     {
-        this.primary = primary;
+        this.identifier = identifier;
     }
 
     public Object visit(IVisitor v, Object arg )

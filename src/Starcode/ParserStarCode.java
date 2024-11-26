@@ -107,7 +107,6 @@ public class ParserStarCode
         }
     }
 
-    //We are not allowing different types for parameters in the methods
     private void parseIdList()
     {
         accept(IDENTIFIER);

@@ -4,7 +4,6 @@ import java.io.*;
 
 public class SourceFile
 {
-	public static final char EOL = '\n';
 	public static final char EOT = 0;
 
 	private FileInputStream source;

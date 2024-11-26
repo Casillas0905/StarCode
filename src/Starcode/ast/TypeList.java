@@ -4,10 +4,10 @@ import java.util.Vector;
 
 public class TypeList extends AST {
 
-    public Vector<ReturnType> returnType;
+    public Vector<ReturnType> returnTypes;
 
     public TypeList(Vector<ReturnType> returnType) {
-        this.returnType = returnType;
+        this.returnTypes = returnType;
     }
 
     public Object visit(IVisitor v, Object arg )
