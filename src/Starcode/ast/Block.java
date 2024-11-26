@@ -8,4 +8,9 @@ public class Block extends AST
     {
         this.statements = statements;
     }
+
+    public Object visit(IVisitor v, Object arg )
+    {
+        return v.visitBlock( this, arg );
+    }
 }

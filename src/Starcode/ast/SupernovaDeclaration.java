@@ -15,4 +15,9 @@ public class SupernovaDeclaration extends OneDeclaration
         this.supernovaBlock = supernovaBlock;
         this.typeList = typeList;
     }
+
+    public Object visit(IVisitor v, Object arg )
+    {
+        return v.visitSupernovaDeclaration( this, arg );
+    }
 }

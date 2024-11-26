@@ -2,6 +2,7 @@ package Starcode;
 
 
 import Starcode.ast.AST;
+import Starcode.ast.Program;
 
 import javax.swing.*;
 
@@ -18,9 +19,10 @@ public class TestDriverAST
 			SourceFile in = new SourceFile(fc.getSelectedFile().getAbsolutePath());
 			Scanner s = new Scanner(in);
 			ParserAST p = new ParserAST(s);
+			SemanticVisitor v = new SemanticVisitor();
 		
 			AST ast = p.parseProgram();
-			//new ASTViewer( ast );
+			//v.visitProgram((Program)ast, null);
 		}
 	}
 }

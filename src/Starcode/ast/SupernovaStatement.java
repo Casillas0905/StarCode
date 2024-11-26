@@ -12,4 +12,9 @@ public class SupernovaStatement extends OneStatement
         this.identifier = identifier;
         this.parameters = parameters;
     }
+
+    public Object visit(IVisitor v, Object arg )
+    {
+        return v.visitSupernovaStatement( this, arg );
+    }
 }

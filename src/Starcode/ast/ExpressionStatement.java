@@ -8,4 +8,9 @@ public class ExpressionStatement extends OneStatement
     {
         this.expression = expression;
     }
+
+    public Object visit(IVisitor v, Object arg )
+    {
+        return v.visitExpressionStatement( this, arg );
+    }
 }

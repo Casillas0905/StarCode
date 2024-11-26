@@ -10,4 +10,9 @@ public class EclipseStatement extends OneStatement
         this.expression = expression;
         this.block = block;
     }
+
+    public Object visit(IVisitor v, Object arg )
+    {
+        return v.visitEclipseStatement( this, arg );
+    }
 }

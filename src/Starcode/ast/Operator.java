@@ -6,4 +6,9 @@ public class Operator extends Terminal
     {
         this.spelling = spelling;
     }
+
+    public Object visit(IVisitor v, Object arg )
+    {
+        return v.visitOperator( this, arg );
+    }
 }
