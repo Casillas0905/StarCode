@@ -2,58 +2,69 @@ package Starcode.scanner;
 
 import static Starcode.scanner.TokenKind.*;
 
-public class Scanner
-{
-	private SourceFile source;
-	
-	private char currentChar;
-	private StringBuffer currentSpelling = new StringBuffer();
+/**
+ * The Scanner class is responsible for lexical analysis.
+ * It reads characters from the source file and groups them into tokens.
+ */
+public class Scanner {
 
-	public Scanner(SourceFile source)
-	{
+	private SourceFile source;  // The source file being scanned
+	private char currentChar;  // The current character being processed
+	private StringBuffer currentSpelling = new StringBuffer();  // The spelling of the current token
+
+	/**
+	 * Constructs a Scanner with the given source file.
+	 *
+	 * @param source The source file to scan.
+	 */
+	public Scanner(SourceFile source) {
 		this.source = source;
-		
-		currentChar = source.getSource();
+		currentChar = source.getSource(); // Initialize the first character
 	}
 
-	public Token scan()
-	{
+	/**
+	 * Scans the next token from the source file.
+	 *
+	 * @return The next token found in the source file.
+	 */
+	public Token scan() {
+		// Skip separators (whitespace and control characters)
 		while (currentChar == '\n' || currentChar == '\r' || currentChar == '\t' || currentChar == ' ')
 			scanSeparator();
 
+		// Reset the current spelling and determine the token kind
 		currentSpelling = new StringBuffer("");
 		TokenKind kind = scanToken();
 
-		return new Token( kind, new String( currentSpelling ) );
+		// Create and return a new Token
+		return new Token(kind, new String(currentSpelling));
 	}
 
-	// This is example of code
-	star
-
-	private TokenKind scanToken()
-	{
-		if(isLetter(currentChar))
-		{
+	/**
+	 * Determines the kind of the current token and consumes the characters.
+	 *
+	 * @return The TokenKind of the scanned token.
+	 */
+	private TokenKind scanToken() {
+		if (isLetter(currentChar)) {
+			// Handle identifiers
 			takeIt();
-			while(isLetter(currentChar) || isDigit(currentChar))
+			while (isLetter(currentChar) || isDigit(currentChar))
 				takeIt();
-
 			return IDENTIFIER;
-		}
-		else if(isDigit(currentChar))
-		{
+		} else if (isDigit(currentChar)) {
+			// Handle numeric literals
 			takeIt();
-			while(isDigit(currentChar))
+			while (isDigit(currentChar))
 				takeIt();
-
 			return COMETLITERAL;
 		}
 
-		switch(currentChar)
-		{
+		// Handle specific symbols and operators
+		switch (currentChar) {
 			case '+': case '-': case '*': case '/':
-			takeIt();
-			return OPERATOR;
+				takeIt();
+				return OPERATOR;
 			case ',':
 				takeIt();
 				return COMMA;
@@ -94,36 +105,50 @@ public class Scanner
 				takeIt();
 				return GT;
 			case SourceFile.EOT:
-				return EOT;
+				return EOT; // End of the source file
 			default:
 				takeIt();
-				return ERROR;
+				return ERROR; // Unrecognized character
 		}
 	}
 
-	private void scanSeparator()
-	{
-		switch(currentChar)
-		{
+	/**
+	 * Skips separators such as whitespace and control characters.
+	 */
+	private void scanSeparator() {
+		switch (currentChar) {
 			case ' ': case '\n': case '\r': case '\t':
-			takeIt();
-			break;
+				takeIt();
+				break;
 		}
 	}
 
-	private void takeIt()
-	{
+	/**
+	 * Consumes the current character, appends it to the current spelling,
+	 * and advances to the next character.
+	 */
+	private void takeIt() {
 		currentSpelling.append(currentChar);
-		currentChar = source.getSource();
+		currentChar = source.getSource(); // Advance to the next character
 	}
 
-	private boolean isLetter(char c)
-	{
+	/**
+	 * Checks if the given character is a letter.
+	 *
+	 * @param c The character to check.
+	 * @return True if the character is a letter; false otherwise.
+	 */
+	private boolean isLetter(char c) {
 		return c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z';
 	}
-	
-	private boolean isDigit(char c)
-	{
+
+	/**
+	 * Checks if the given character is a digit.
+	 *
+	 * @param c The character to check.
+	 * @return True if the character is a digit; false otherwise.
+	 */
+	private boolean isDigit(char c) {
 		return c >= '0' && c <= '9';
 	}
 }
